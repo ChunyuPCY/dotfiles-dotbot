@@ -2,3 +2,7 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "nvim-minimax"]
+	path = nvim-minimax
+	url = https://github.com/ChunyuPCY/nvim-minimax
+	ignore = dirty

@@ -8,6 +8,7 @@
 
 - link:
     ~/.config/starship: ./starship
+    ~/.config/nvim-minimax: ./nvim-minimax
 
 - shell:
     - git submodule sync --recursive

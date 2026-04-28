@@ -57,8 +57,8 @@ end
 set -x BAT_THEME (echo "$THEME $THEME_STYLE" | python3 -c "import sys; print(sys.stdin.read().strip().title())")
 
 # 加载私有配置（如果存在）
-if test -f "$XDG_CONFIG_HOME/fish/config.fish.private"
-    source "$XDG_CONFIG_HOME/fish/config.fish.private"
+if test -f "$XDG_CONFIG_HOME/fish/private/api-key.fish"
+    source "$XDG_CONFIG_HOME/fish/private/api-key.fish"
 end
 
 # fnm

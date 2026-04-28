@@ -14,10 +14,14 @@
 - link:
     ~/.config/starship: ./starship
     ~/.config/nvim-minimax: ./nvim-minimax
+    ~/.config/eza: ./eza
+    ~/.config/bat: ./bat
+    ~/.config/bottom: ./bottom
+    ~/.config/wezterm: ./wezterm
 
     # fish
     ~/.config/fish: ./fish
-    ~/.config/fish/config.fish.private: private/fish/config.fish.private
+    ~/.config/fish/private/api-key.fish: private/fish/api-key.fish
 
 - shell:
     - git submodule sync --recursive

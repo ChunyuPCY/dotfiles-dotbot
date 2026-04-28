@@ -6,3 +6,6 @@
 	path = nvim-minimax
 	url = https://github.com/ChunyuPCY/nvim-minimax
 	ignore = dirty
+[submodule "dotbot-age"]
+	path = dotbot-age
+	url = https://github.com/fcatuhe/dotbot-age.git

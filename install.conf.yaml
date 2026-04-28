@@ -18,6 +18,7 @@
     ~/.config/bat: ./bat
     ~/.config/bottom: ./bottom
     ~/.config/wezterm: ./wezterm
+    ~/.config/zellij: ./zellij
 
     # fish
     ~/.config/fish: ./fish

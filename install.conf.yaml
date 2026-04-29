@@ -19,6 +19,7 @@
     ~/.config/bottom: ./bottom
     ~/.config/wezterm: ./wezterm
     ~/.config/zellij: ./zellij
+    ~/.config/fastfetch: ./fastfetch
 
     # fish
     ~/.config/fish: ./fish

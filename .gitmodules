@@ -4,7 +4,7 @@
 	ignore = dirty
 [submodule "nvim-minimax"]
 	path = nvim-minimax
-	url = https://github.com/ChunyuPCY/nvim-minimax
+	url = git@github.com:ChunyuPCY/nvim-minimax.git
 	ignore = dirty
 [submodule "dotbot-age"]
 	path = dotbot-age

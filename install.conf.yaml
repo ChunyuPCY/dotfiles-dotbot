@@ -20,6 +20,7 @@
     ~/.config/wezterm: ./wezterm
     ~/.config/zellij: ./zellij
     ~/.config/fastfetch: ./fastfetch
+    ~/.config/yazi: ./yazi
 
     # fish
     ~/.config/fish: ./fish

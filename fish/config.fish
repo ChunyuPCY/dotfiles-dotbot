@@ -105,7 +105,12 @@ function y
 end
 # -----------------------------------------------------------
 
-
+#
+# lazygit
+#
+set -gx LG_CONFIG_FILE "$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/pink.yml"
+alias lgit "lazygit"
+# -----------------------------------------------------------
 
 function fish_greeting
     fastfetch

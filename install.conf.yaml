@@ -21,6 +21,7 @@
     ~/.config/zellij: ./zellij
     ~/.config/fastfetch: ./fastfetch
     ~/.config/yazi: ./yazi
+    ~/.config/lazygit: ./lazygit
 
     # fish
     ~/.config/fish: ./fish

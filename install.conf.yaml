@@ -22,6 +22,7 @@
     ~/.config/fastfetch: ./fastfetch
     ~/.config/yazi: ./yazi
     ~/.config/lazygit: ./lazygit
+    ~/.config/tmux: ./tmux
 
     # fish
     ~/.config/fish: ./fish

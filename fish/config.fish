@@ -112,6 +112,4 @@ set -gx LG_CONFIG_FILE "$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/laz
 alias lgit "lazygit"
 # -----------------------------------------------------------
 
-function fish_greeting
-    fastfetch
-end
+set -U fish_greeting

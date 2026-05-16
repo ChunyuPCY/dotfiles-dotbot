@@ -25,6 +25,7 @@ eval (/opt/homebrew/bin/brew shellenv | string collect)
 function proxy_on
     set -x http_proxy http://127.0.0.1:7897
     set -x https_proxy http://127.0.0.1:7897
+    set -x all_proxy socks5://127.0.0.1:7897
 end
 
 # 定义一个关闭代理的函数
@@ -62,6 +63,7 @@ if test -f "$XDG_CONFIG_HOME/fish/private/api-key.fish"
 end
 
 # fnm
+set -x FNM_NODE_DIST_MIRROR https://npmmirror.com/mirrors/node/
 fnm env --use-on-cd --version-file-strategy=recursive --resolve-engines --shell fish | source
 
 # nvim

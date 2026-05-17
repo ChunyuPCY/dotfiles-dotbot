@@ -115,3 +115,32 @@ alias lgit "lazygit"
 # -----------------------------------------------------------
 
 set -U fish_greeting
+
+#
+# ----------------------------- Rsut ----------------------------
+#
+set -x RUSTUP_UPDATE_ROOT https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+set -x RUSTUP_DIST_SERVER https://mirrors.tuna.tsinghua.edu.cn/rustup
+set -gx RUSTUP_HOME "$XDG_DATA_HOME/rustup"
+set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
+fish_add_path "$CARGO_HOME/bin"
+# export RUST_ANALYZER_SERVER_PATH="$CARGO_HOME/bin/rust-analyzer"
+# ---------------------------------------------------------------
+
+#
+# --------------------------- Postgres --------------------------
+#
+fish_add_path "/opt/homebrew/opt/postgresql@17/bin"
+set -gx LDFLAGS "-L/opt/homebrew/opt/postgresql@17/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/postgresql@17/include"
+#
+# ---------------------------------------------------------------
+
+#
+# ------------------------- UV (python) -------------------------
+#
+eval "$(uv generate-shell-completion fish)"
+eval "$(uvx --generate-shell-completion fish)"
+fish_add_path "$HOME/.local/bin"
+#
+# ---------------------------------------------------------------

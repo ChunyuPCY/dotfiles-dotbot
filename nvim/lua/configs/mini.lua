@@ -3,7 +3,7 @@ vim.pack.add { Config.gh 'nvim-mini/mini.nvim' }
 
 -- If a nerd font is available, load the icons module for pretty icons in various plugins.
 if vim.g.have_nerd_font then
-  vim.notify 'load mini icons'
+  -- vim.notify 'load mini icons'
   require('mini.icons').setup()
   -- Statusline. Sets `:h 'statusline'` to show more info in a line below window.
   -- Example usage:

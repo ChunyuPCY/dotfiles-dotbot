@@ -19,7 +19,11 @@ set -gx THEME_STYLE "mocha"
 fish_config theme choose "$THEME-$THEME_STYLE"
 
 # 配置 Homebrew 环境变量
+# 配置 Homebrew 核心镜像
 eval (/opt/homebrew/bin/brew shellenv | string collect)
+# git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+set -x HOMEBREW_BOTTLE_DOMAIN https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+set -x HOMEBREW_NO_ENV_HINTS "1"  # 可选：屏蔽提示信息
 
 # 定义一个名为 proxy 的函数
 function proxy_on
@@ -67,7 +71,7 @@ set -x FNM_NODE_DIST_MIRROR https://npmmirror.com/mirrors/node/
 fnm env --use-on-cd --version-file-strategy=recursive --resolve-engines --shell fish | source
 
 # nvim
-alias vi "NVIM_APPNAME=nvim-minimax nvim"
+alias vi "env NVIM_APPNAME=nvim-minimax nvim"
 
 # cici
 alias ciciconfig "git config user.name panchunyu;git config user.email panchunyu@chinacici.com"
@@ -100,7 +104,7 @@ alias tree "eza --tree --icons"
 function y
   set tmp (mktemp -t "yazi-cwd.XXXXXX")
   command yazi $argv --cwd-file="$tmp"
-  if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
+  if read -z cwd < "$tmp"; and test "$cwd" != "$PWD"; and test -d "$cwd"
     builtin cd -- "$cwd"
   end
   rm -f -- "$tmp"

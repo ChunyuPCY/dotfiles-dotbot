@@ -2,4 +2,5 @@
 /lua.bat
 /lua_modules
 /.luarocks
+backdrops/*
 .DS_Store

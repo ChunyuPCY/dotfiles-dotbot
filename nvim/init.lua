@@ -1,6 +1,9 @@
+-- =====================================================
+-- [ 全局变量 ]
+-- =====================================================
 _G.Config = {}
 
-local gr = vim.api.nvim_create_augroup('custom-config', {})
+local gr = vim.api.nvim_create_augroup('custom-config', {clear=true})
 Config.new_autocmd = function(event, pattern, callback, desc)
   local opts = { group = gr, pattern = pattern, callback = callback, desc = desc }
   vim.api.nvim_create_autocmd(event, opts)
@@ -35,3 +38,32 @@ Config.run_build = run_build
 ---@return string
 local function gh(repo) return 'https://github.com/' .. repo end
 Config.gh = gh
+
+-- =====================================================
+-- [ 主题颜色 ]
+-- =====================================================
+vim.cmd.colorscheme 'catppuccin'
+
+local function set_transparent() -- set UI component to transparent
+  local groups = {
+    'Normal',
+    'NormalNC',
+    'EndOfBuffer',
+    'NormalFloat',
+    'FloatBorder',
+    'SignColumn',
+    'StatusLine',
+    'StatusLineNC',
+    'TabLine',
+    'TabLineFill',
+    'TabLineSel',
+    'ColorColumn',
+  }
+  for _, g in ipairs(groups) do
+    vim.api.nvim_set_hl(0, g, { bg = 'none' })
+  end
+  vim.api.nvim_set_hl(0, 'TabLineFill', { bg = 'none', fg = '#767676' })
+end
+
+set_transparent()
+

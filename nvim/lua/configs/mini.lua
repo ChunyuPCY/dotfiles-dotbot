@@ -1,5 +1,7 @@
 --  A collection of various small independent plugins/modules
-vim.pack.add { Config.gh 'nvim-mini/mini.nvim' }
+local gh = require('utils').gh
+
+vim.pack.add { gh 'nvim-mini/mini.nvim' }
 
 -- If a nerd font is available, load the icons module for pretty icons in various plugins.
 if vim.g.have_nerd_font then

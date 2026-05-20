@@ -3,6 +3,7 @@
 -- =====================================================
 _G.Config = {}
 
+
 local gr = vim.api.nvim_create_augroup('custom-config', {clear=true})
 Config.new_autocmd = function(event, pattern, callback, desc)
   local opts = { group = gr, pattern = pattern, callback = callback, desc = desc }
@@ -31,13 +32,6 @@ local function run_build(name, cmd, cwd)
 end
 
 Config.run_build = run_build
-
----Because most plugins are hosted on GitHub, you can use the helper
----function to have less repetition in the following sections.
----@param repo string
----@return string
-local function gh(repo) return 'https://github.com/' .. repo end
-Config.gh = gh
 
 -- =====================================================
 -- [ 主题颜色 ]

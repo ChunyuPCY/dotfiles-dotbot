@@ -1,0 +1,18 @@
+{
+  "sec": {
+    "prefix": "sec",
+    "body": [
+      "-- ===========================================",
+      "-- [ ${0} ]",
+      "-- ==========================================="
+    ],
+    "description": "Section comment"
+  },
+  "github": {
+    "prefix": "github",
+    "body": [
+      "'https:\/\/github.com\/${0}',"
+    ],
+    "description": "Github url"
+	}
+}

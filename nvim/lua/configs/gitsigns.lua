@@ -2,7 +2,9 @@
 --
 -- See `:help gitsigns` to understand what each configuration key does.
 -- Adds git related signs to the gutter, as well as utilities for managing changes
-vim.pack.add { Config.gh 'lewis6991/gitsigns.nvim' }
+local gh = require('utils').gh
+
+vim.pack.add { gh 'lewis6991/gitsigns.nvim' }
 
 require('gitsigns').setup {
   signs = {

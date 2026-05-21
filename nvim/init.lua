@@ -69,6 +69,158 @@ function PackUtils.sync(active_specs, disabled_specs)
   end
 end
 
+-- [ 动态路径 ] 获取插件根目录
+function PackUtils.get_root(name)
+  name = PackUtils.get_name(name)
+  local paths = vim.api.nvim_get_runtime_file('pack/*/*/' .. name, true)
+  if #paths > 0 then return paths[1] end
+  local glob = vim.fn.globpath(vim.o.packpath, 'pack/*/*/' .. name, 0, 1)
+  return glob[1] or nil
+end
+
+-- [ 构建执行 ] 执行编译任务
+function PackUtils.run_build(name, build_cmd)
+  name = PackUtils.get_name(name)
+  if PackUtils.disabled_plugins[name] then return end
+  if not build_cmd or PackUtils.is_building[name] then return end
+
+  local path = PackUtils.get_root(name)
+  if not path then return end
+  local stamp = path .. '/.build_done'
+  PackUtils.is_building[name] = true
+
+  -- 判断是否为 Neovim 内部命令（以 : 开头）
+  local is_vim_cmd = false
+  local vim_cmd_str = ''
+
+  if type(build_cmd) == 'string' and build_cmd:sub(1, 1) == ':' then
+    is_vim_cmd = true
+    vim_cmd_str = build_cmd:sub(2)
+  elseif type(build_cmd) == 'table' and type(build_cmd[1]) == 'string' and build_cmd[1]:sub(1, 1) == ':' then
+    is_vim_cmd = true
+    vim_cmd_str = table.concat(build_cmd, ' '):sub(2)
+  end
+
+  if is_vim_cmd then
+    -- 在当前实例的空闲时执行 vim.cmd
+    vim.schedule(function()
+      vim.notify('⚙️ Running ' .. name .. ' setup command...', vim.log.levels.INFO)
+      -- 确保插件在当前实例已经被加载
+      pcall(vim.cmd.packadd, name)
+      -- 保护执行，防止命令错误导致编译器崩溃
+      local ok, err = pcall(vim.cmd, vim_cmd_str)
+      PackUtils.is_building[name] = false
+
+      if ok then
+        local f = io.open(stamp, 'w')
+        if f then f:close() end
+        vim.notify('✅ ' .. name .. ' setup success.', vim.log.levels.INFO)
+      else
+        vim.notify('❌ ' .. name .. ' setup failed: ' .. tostring(err), vim.log.levels.ERROR)
+      end
+    end)
+  else
+    local final_cmd = {}
+    if type(build_cmd) == 'string' then
+      for word in build_cmd:gmatch '%S+' do
+        table.insert(final_cmd, word)
+      end
+    else
+      final_cmd = build_cmd
+    end
+
+    vim.schedule(function() vim.notify('⚙️ Building ' .. name .. ' (Background)...', vim.log.levels.INFO) end)
+    vim.system(final_cmd, { cwd = path }, function(out)
+      PackUtils.is_building[name] = false
+      if out.code == 0 then
+        local f = io.open(stamp, 'w')
+        if f then f:close() end
+        vim.schedule(function() vim.notify('✅ ' .. name .. ' build success.', vim.log.levels.INFO) end)
+      else
+        vim.schedule(function() vim.notify('❌ ' .. name .. ' build failed: ' .. (out.stderr or 'Unknown Error'), vim.log.levels.ERROR) end)
+      end
+    end)
+  end
+end
+
+-- [ 监听器 ] 注册安装/更新监听
+function PackUtils.setup_listener(name, build_cmd)
+  name = PackUtils.get_name(name)
+  if PackUtils.disabled_plugins[name] then return end
+  if not build_cmd then return end
+  vim.api.nvim_create_autocmd('PackChanged', {
+    pattern = '*',
+    callback = function(ev)
+      if ev.data.spec.name == name and (ev.data.kind == 'update' or ev.data.kind == 'install') then
+        local stamp = ev.data.path .. '/.build_done'
+        os.remove(stamp) -- 自动删除 .build_done 文件，触发构建
+        PackUtils.run_build(name, build_cmd)
+      end
+    end,
+  })
+end
+
+-- [ 健康检查 ] 如果没标记且有构建命令，触发构建
+function PackUtils.check_health(name, build_cmd)
+  name = PackUtils.get_name(name)
+  if PackUtils.disabled_plugins[name] then return end
+  if not build_cmd then return end
+  local path = PackUtils.get_root(name)
+  if path then
+    local stamp = path .. '/.build_done'
+    if vim.fn.filereadable(stamp) == 0 then PackUtils.run_build(name, build_cmd) end
+  end
+end
+
+-- 全方位防崩加载引擎
+function PackUtils.load(P, config_fn)
+  -- 生成绝对唯一的 call_id
+  local info = debug.getinfo(2, 'Sl')
+  local call_id = (info.short_src or 'unknown') .. ':' .. (info.currentline or 0)
+
+  -- 精确拦截：如果【之一行代码】已经成功执行过，直接跳过
+  if PackUtils.is_initialized[call_id] then return end
+
+  P.name = PackUtils.get_name(P.name)
+  if P.deps then
+    for i, dep in ipairs(P.deps) do
+      P.deps[i] = PackUtils.get_name(dep)
+    end
+  end
+
+  if PackUtils.disabled_plugins[P.name] then return end
+  -- 磁盘中找不到，说明它正在异步克隆下载，直接静默退出
+  if not PackUtils.get_root(P.name) then return end
+
+  -- 插件级操作：整个生命周期只需做一次的操作（检查编译和挂载）
+  if not PackUtils.plugin_loaded[P.name] then
+    PackUtils.check_health(P.name, P.build_cmd)
+
+    pcall(vim.cmd.packadd, P.name)
+
+    if P.deps then
+      for _, dep in ipairs(P.deps) do
+        local dep_ok = pcall(vim.cmd.packadd, dep)
+        if not dep_ok then vim.notify('Warning: ' .. P.name .. ' dependency[' .. dep .. '] missing', vim.log.levels.WARN) end
+      end
+    end
+    -- 标记该仓库已挂载
+    PackUtils.plugin_loaded[P.name] = true
+  end
+
+  -- 保护 Setup 执行：自由地 require，如有拼写错误，这里的 pcall 会完美捕获并报错
+  if config_fn then
+    local setup_ok, err = pcall(config_fn)
+    if not setup_ok then
+      vim.notify('Error: ' .. P.name .. ' setup failed: \n' .. tostring(err), vim.log.levels.ERROR)
+      return
+    end
+  end
+
+  -- 标记【具体的代码块】已执行完毕
+  PackUtils.is_initialized[call_id] = true
+end
+
 -- ==============================================================
 -- [ 颜色主题 ]
 -- ==============================================================

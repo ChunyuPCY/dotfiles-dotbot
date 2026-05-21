@@ -19,6 +19,7 @@
     ~/.config/bat: ./bat
     ~/.config/bottom: ./bottom
     ~/.config/wezterm: ./wezterm
+    ~/.config/ghostty: ./ghostty
     ~/.config/zellij: ./zellij
     ~/.config/fastfetch: ./fastfetch
     ~/.config/yazi: ./yazi

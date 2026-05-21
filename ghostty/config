@@ -1,0 +1,65 @@
+# ===
+# === 基本设置
+# ===
+
+# 英文字体(可以使用 CLI 生成有效值列表:ghostty +list-fonts)
+font-family = "Maple Mono NF"
+# 中文字体
+# font-family = "FZLTZHK--GBK1-0"
+# 字体大小
+font-size = 16
+# 自动复制选中文本
+copy-on-select = true
+# 输入文本时隐藏鼠标
+mouse-hide-while-typing = true
+# 确认关闭窗口时不显示确认提示
+confirm-close-surface = false
+cursor-style = "block"
+# 光标轨迹特效相关文件
+custom-shader = "~/.config/ghostty/shaders/liquid-ghostty.glsl"
+
+# ===
+# === 主题
+# ===
+
+palette = 0=#000000
+palette = 1=#ff5555
+palette = 2=#50fa7b
+palette = 3=#f1fa8c
+palette = 4=#bd93f9
+palette = 5=#ff79c6
+palette = 6=#8be9fd
+palette = 7=#bbbbbb
+palette = 8=#44475a
+palette = 9=#ff5555
+palette = 10=#50fa7b
+palette = 11=#f1fa8c
+palette = 12=#bd93f9
+palette = 13=#ff79c6
+palette = 14=#8be9fd
+palette = 15=#ffffff
+foreground = f8f8f2
+background = 282a36
+background-opacity = 1.5
+
+# background-image = "~/.config/ghostty/images/0.png"
+background-image = "~/.config/ghostty/images/1.jpg"
+background-image-opacity = 0.2
+background-image-fit = "cover"
+
+window-decoration = false
+
+# ===
+# === 按键绑定
+# ===
+
+# 清除所预设置的键绑定
+# keybind=clear
+# 向右新建分屏
+# keybind = ctrl+i=new_split:right
+# 向右新建分屏
+# keybind = ctrl+e=new_split:down 
+# 逆时针切换分屏
+keybind = ctrl+shift+n=goto_split:left 
+# 顺时针切换分屏
+keybind = ctrl+shift+i=goto_split:right 

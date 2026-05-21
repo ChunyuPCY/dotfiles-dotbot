@@ -11,6 +11,7 @@ vim.o.relativenumber = true -- 使用相对数
 vim.o.cursorline = true -- 高亮当前行
 vim.o.scrolloff = 10 -- 在光标上方/下方保留 10 行内容
 vim.o.sidescrolloff = 10 -- 将光标左侧/右侧保留 10 个字符的位置
+vim.o.cmdheight = 0
 
 vim.o.mouse = 'a' -- 鼠标功能全开
 
@@ -35,7 +36,7 @@ vim.o.tabstop = 2 -- tab width
 vim.o.shiftwidth = 2 -- indent width
 vim.o.softtabstop = 2 -- 软制表符 不使用制表符和退格键进行换行
 vim.o.expandtab = true -- 使用 空格 代替 制表符
-vim.o.smartindent =true
+vim.o.smartindent = true
 vim.o.autoindent = true
 
 vim.o.updatetime = 250 -- Decrease update time
@@ -51,5 +52,5 @@ vim.o.inccommand = 'split' -- Preview substitutions live, as you type!
 
 vim.o.confirm = true
 
-vim.opt.iskeyword = "_,49-57,A-Z,a-z" -- 指定 keyword
-vim.o.winborder = "rounded" -- 让全局默认边框变成rounded
+vim.opt.iskeyword = '_,49-57,A-Z,a-z' -- 指定 keyword
+vim.o.winborder = 'rounded' -- 让全局默认边框变成rounded

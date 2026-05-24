@@ -10,19 +10,13 @@ _G.PackUtils = {
 }
 -- stylua: ignore end
 
--- [ 解析插件名 ]
+-- [解析插件名]
 function PackUtils.get_name(spec)
-  if type(spec) == 'table' then return spec.name end
-
-  local plugin_name = vim.fs.basename(spec)
-
-  -- 仅当以 .git 结尾时才进行替换
-  if plugin_name:ends_with '.git' then return plugin_name:sub(1, -5) end
-
-  return plugin_name
+  local url = type(spec) == 'table' and spec.src or spec
+  return type(spec) == 'table' and spec.name or url:match('([^/]+)$'):gsub('%.git$', '')
 end
 
--- [ 同步清理 ] 自动删除孤儿，并注册禁用名单
+-- [同步清理] 自动删除孤儿，并注册禁用名单
 function PackUtils.sync(active_specs, disabled_specs)
   disabled_specs = disabled_specs or {}
   local protected_names = {}
@@ -31,7 +25,6 @@ function PackUtils.sync(active_specs, disabled_specs)
   for _, spec in ipairs(active_specs) do
     protected_names[PackUtils.get_name(spec)] = true
   end
-
   for _, spec in ipairs(disabled_specs) do
     local name = PackUtils.get_name(spec)
     protected_names[name] = true
@@ -54,8 +47,7 @@ function PackUtils.sync(active_specs, disabled_specs)
       end
     end
   end
-
-  -- 找出既不在 active 也不在 disabled 里面的孤儿
+  -- 找出既不在 active 也不在 disabled 里的孤儿
   local to_delete = {}
   for _, installed in ipairs(installed_plugins) do
     if not protected_names[installed] then table.insert(to_delete, installed) end
@@ -69,27 +61,26 @@ function PackUtils.sync(active_specs, disabled_specs)
   end
 end
 
--- [ 动态路径 ] 获取插件根目录
+-- [动态路径] 获取插件根目录
 function PackUtils.get_root(name)
   name = PackUtils.get_name(name)
   local paths = vim.api.nvim_get_runtime_file('pack/*/*/' .. name, true)
   if #paths > 0 then return paths[1] end
-  local glob = vim.fn.globpath(vim.o.packpath, 'pack/*/*/' .. name, false, true)
+  local glob = vim.fn.globpath(vim.o.packpath, 'pack/*/*/' .. name, 0, 1)
   return glob[1] or nil
 end
 
--- [ 构建执行 ] 执行编译任务
+-- [构建执行] 执行编译任务
 function PackUtils.run_build(name, build_cmd)
   name = PackUtils.get_name(name)
   if PackUtils.disabled_plugins[name] then return end
   if not build_cmd or PackUtils.is_building[name] then return end
-
   local path = PackUtils.get_root(name)
   if not path then return end
   local stamp = path .. '/.build_done'
   PackUtils.is_building[name] = true
 
-  -- 判断是否为 Neovim 内部命令（以 : 开头）
+  -- 判断是否为 Neovim 内部命令 (以 : 开头)
   local is_vim_cmd = false
   local vim_cmd_str = ''
 
@@ -107,10 +98,9 @@ function PackUtils.run_build(name, build_cmd)
       vim.notify('⚙️ Running ' .. name .. ' setup command...', vim.log.levels.INFO)
       -- 确保插件在当前实例已经被加载
       pcall(vim.cmd.packadd, name)
-      -- 保护执行，防止命令错误导致编译器崩溃
+      -- 保护执行，防止命令错误导致编辑器崩溃
       local ok, err = pcall(vim.cmd, vim_cmd_str)
       PackUtils.is_building[name] = false
-
       if ok then
         local f = io.open(stamp, 'w')
         if f then f:close() end
@@ -128,7 +118,6 @@ function PackUtils.run_build(name, build_cmd)
     else
       final_cmd = build_cmd
     end
-
     vim.schedule(function() vim.notify('⚙️ Building ' .. name .. ' (Background)...', vim.log.levels.INFO) end)
     vim.system(final_cmd, { cwd = path }, function(out)
       PackUtils.is_building[name] = false
@@ -143,7 +132,7 @@ function PackUtils.run_build(name, build_cmd)
   end
 end
 
--- [ 监听器 ] 注册安装/更新监听
+-- [监听器] 注册安装/更新监听
 function PackUtils.setup_listener(name, build_cmd)
   name = PackUtils.get_name(name)
   if PackUtils.disabled_plugins[name] then return end
@@ -153,14 +142,14 @@ function PackUtils.setup_listener(name, build_cmd)
     callback = function(ev)
       if ev.data.spec.name == name and (ev.data.kind == 'update' or ev.data.kind == 'install') then
         local stamp = ev.data.path .. '/.build_done'
-        os.remove(stamp) -- 自动删除 .build_done 文件，触发构建
+        os.remove(stamp) -- 自动删除.build_done文件触发构建
         PackUtils.run_build(name, build_cmd)
       end
     end,
   })
 end
 
--- [ 健康检查 ] 如果没标记且有构建命令，触发构建
+-- [健康检查] 如果没标记且有构建命令，则触发构建
 function PackUtils.check_health(name, build_cmd)
   name = PackUtils.get_name(name)
   if PackUtils.disabled_plugins[name] then return end
@@ -174,11 +163,11 @@ end
 
 -- 全方位防崩加载引擎
 function PackUtils.load(P, config_fn)
-  -- 生成绝对唯一的 call_id
+  -- 生成如 "lua/pack/configs/mini.lua:24" 这样绝对唯一的 call_id
   local info = debug.getinfo(2, 'Sl')
   local call_id = (info.short_src or 'unknown') .. ':' .. (info.currentline or 0)
 
-  -- 精确拦截：如果【之一行代码】已经成功执行过，直接跳过
+  -- 精准拦截：如果【这一行代码】已经成功执行过，直接跳过
   if PackUtils.is_initialized[call_id] then return end
 
   P.name = PackUtils.get_name(P.name)
@@ -192,10 +181,9 @@ function PackUtils.load(P, config_fn)
   -- 磁盘中找不到，说明它正在异步克隆下载，直接静默退出
   if not PackUtils.get_root(P.name) then return end
 
-  -- 插件级操作：整个生命周期只需做一次的操作（检查编译和挂载）
+  -- 插件级操作：整个生命周期只需做一次的动作 (检查编译和挂载)
   if not PackUtils.plugin_loaded[P.name] then
     PackUtils.check_health(P.name, P.build_cmd)
-
     pcall(vim.cmd.packadd, P.name)
 
     if P.deps then

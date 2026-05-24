@@ -11,7 +11,7 @@ vim.o.relativenumber = true -- 使用相对数
 vim.o.cursorline = true -- 高亮当前行
 vim.o.scrolloff = 10 -- 在光标上方/下方保留 10 行内容
 vim.o.sidescrolloff = 10 -- 将光标左侧/右侧保留 10 个字符的位置
-vim.o.cmdheight = 0
+-- vim.o.cmdheight = 0
 
 vim.o.mouse = 'a' -- 鼠标功能全开
 

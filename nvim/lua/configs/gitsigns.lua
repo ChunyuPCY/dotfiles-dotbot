@@ -21,10 +21,10 @@ vim.api.nvim_create_autocmd({
             local gitsigns = require 'gitsigns'
             local map_lua = (require 'utils').map_lua
             -- Navigation
-            map_lua('t=', function() gitsigns.nav_hunk 'next' end)
-            map_lua('t-', function() gitsigns.nav_hunk 'prev' end)
+            map_lua(']h', function() gitsigns.nav_hunk 'next' end)
+            map_lua('[h', function() gitsigns.nav_hunk 'prev' end)
             -- show diff
-            map_lua('<leader>hd', gitsigns.diffthis)
+            map_lua('<leader>gd', gitsigns.diffthis)
           end,
         }
       end)

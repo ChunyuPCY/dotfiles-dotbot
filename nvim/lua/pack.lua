@@ -2,13 +2,18 @@ local utils = require 'utils'
 local gh = utils.gh
 
 local specs = {
+  gh 'nvim-lua/plenary.nvim',
   -- mini.lua 各种对字符的surround包裹{} [] ''
   gh 'nvim-mini/mini.nvim',
+  -- lspconfig.lua
+  gh 'mason-org/mason.nvim',
+  gh 'mason-org/mason-registry',
+  gh 'neovim/nvim-lspconfig',
+  gh 'mason-org/mason-lspconfig.nvim',
+  gh 'MysticalDevil/inlay-hints.nvim',
+
   -- treesitter.lua 需要安装tree-sitter-cli工具包
-  {
-    src = gh 'nvim-treesitter/nvim-treesitter',
-    version = 'main',
-  },
+  gh 'nvim-treesitter/nvim-treesitter',
   -- gitsigns.lua 突出增、删、改过的行
   gh 'lewis6991/gitsigns.nvim',
 }

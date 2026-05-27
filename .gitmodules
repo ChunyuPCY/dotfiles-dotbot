@@ -5,6 +5,3 @@
 [submodule "dotbot-age"]
 	path = dotbot-age
 	url = https://github.com/fcatuhe/dotbot-age.git
-[submodule "nvim-minimax"]
-	path = nvim-minimax
-	url = git@github.com:ChunyuPCY/nvim-minimax.git

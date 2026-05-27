@@ -72,6 +72,8 @@ fnm env --use-on-cd --version-file-strategy=recursive --resolve-engines --shell 
 
 # nvim
 alias vi "env NVIM_APPNAME=nvim-minimax nvim"
+alias lvim "env NVIM_APPNAME=lazyvim nvim"
+
 
 # cici
 alias ciciconfig "git config user.name panchunyu;git config user.email panchunyu@chinacici.com"

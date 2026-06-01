@@ -1,19 +1,19 @@
 if status is-interactive
-# Commands to run in interactive sessions can go here
+    # Commands to run in interactive sessions can go here
 end
 
 # XDG Base Directory Specification
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-set -gx XDG_CONFIG_HOME "$HOME/.config"      # 配置文件
-set -gx XDG_CACHE_HOME "$HOME/.cache"        # 非必要缓存数据
-set -gx XDG_DATA_HOME "$HOME/.local/share"   # 重要可移植数据
-set -gx XDG_STATE_HOME "$HOME/.local/state"  # 持久化非可移植数据
+set -gx XDG_CONFIG_HOME "$HOME/.config" # 配置文件
+set -gx XDG_CACHE_HOME "$HOME/.cache" # 非必要缓存数据
+set -gx XDG_DATA_HOME "$HOME/.local/share" # 重要可移植数据
+set -gx XDG_STATE_HOME "$HOME/.local/state" # 持久化非可移植数据
 
-set -gx EDITOR "nvim"
+set -gx EDITOR nvim
 
 # 主题设置 (Catppuccin Mocha)
-set -gx THEME "catppuccin"
-set -gx THEME_STYLE "mocha"
+set -gx THEME catppuccin
+set -gx THEME_STYLE mocha
 
 # fish theme
 fish_config theme choose "$THEME-$THEME_STYLE"
@@ -23,7 +23,7 @@ fish_config theme choose "$THEME-$THEME_STYLE"
 eval (/opt/homebrew/bin/brew shellenv | string collect)
 # git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 set -x HOMEBREW_BOTTLE_DOMAIN https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-set -x HOMEBREW_NO_ENV_HINTS "1"  # 可选：屏蔽提示信息
+set -x HOMEBREW_NO_ENV_HINTS 1 # 可选：屏蔽提示信息
 
 # 定义一个名为 proxy 的函数
 function proxy_on
@@ -74,12 +74,12 @@ fnm env --use-on-cd --version-file-strategy=recursive --resolve-engines --shell 
 alias vi "env NVIM_APPNAME=nvim-minimax nvim"
 alias lvim "env NVIM_APPNAME=lazyvim nvim"
 
-
 # cici
 alias ciciconfig "git config user.name panchunyu;git config user.email panchunyu@chinacici.com"
 
 # qoder
 alias qoder 'open -a "Qoder"'
+alias qc 'open -a "Qoder CN"'
 
 alias fup "source $XDG_CONFIG_HOME/fish/config.fish;echo fish updated!"
 
@@ -104,12 +104,12 @@ alias tree "eza --tree --icons"
 # yazi                                                      |
 #------------------------------------------------------------
 function y
-  set tmp (mktemp -t "yazi-cwd.XXXXXX")
-  command yazi $argv --cwd-file="$tmp"
-  if read -z cwd < "$tmp"; and test "$cwd" != "$PWD"; and test -d "$cwd"
-    builtin cd -- "$cwd"
-  end
-  rm -f -- "$tmp"
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    command yazi $argv --cwd-file="$tmp"
+    if read -z cwd <"$tmp"; and test "$cwd" != "$PWD"; and test -d "$cwd"
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
 end
 # -----------------------------------------------------------
 
@@ -117,7 +117,7 @@ end
 # lazygit
 #
 set -gx LG_CONFIG_FILE "$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/pink.yml"
-alias lgit "lazygit"
+alias lgit lazygit
 # -----------------------------------------------------------
 
 set -U fish_greeting

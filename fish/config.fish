@@ -68,7 +68,7 @@ end
 
 # fnm
 set -x FNM_NODE_DIST_MIRROR https://npmmirror.com/mirrors/node/
-fnm env --use-on-cd --version-file-strategy=recursive --resolve-engines --shell fish | source
+fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --shell fish | source
 
 # nvim
 alias vi "env NVIM_APPNAME=nvim-minimax nvim"

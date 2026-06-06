@@ -1,6 +1,6 @@
 return {
   "yetone/avante.nvim",
-  enabled = false,
+  enabled = true,
   opts = {
     -- add any opts here
     -- for example
@@ -14,7 +14,9 @@ return {
         model = "deepseek-v4-pro",
         max_tokens = 8192,
         -- 🆕 V4 新增：思考模式参数(可选)
-        reasoning_effort = "max",
+        extra_request_body = {
+          reasoning_effort = "max",
+        },
       },
       qianwen = {
         __inherited_from = "openai",

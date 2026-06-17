@@ -9,7 +9,9 @@ set -gx XDG_CACHE_HOME "$HOME/.cache" # 非必要缓存数据
 set -gx XDG_DATA_HOME "$HOME/.local/share" # 重要可移植数据
 set -gx XDG_STATE_HOME "$HOME/.local/state" # 持久化非可移植数据
 
-set -gx EDITOR nvim
+set -gx EDITOR lvim
+
+fish_add_path "$HOME/.local/bin"
 
 # 主题设置 (Catppuccin Mocha)
 set -gx THEME catppuccin

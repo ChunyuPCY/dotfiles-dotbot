@@ -552,6 +552,11 @@ later(function()
   MiniKeymap.map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
   -- On `<BS>` just try to account for pairs from 'mini.pairs'
   MiniKeymap.map_multistep('i', '<BS>', { 'minipairs_bs' })
+
+  local map_combo = require('mini.keymap').map_combo
+  local mode = { 'i', 'c', 'x', 's' }
+
+  map_combo(mode, 'jk', '<BS><BS><Esc>')
 end)
 
 -- Window with text overview. It is displayed on the right hand side. Can be used

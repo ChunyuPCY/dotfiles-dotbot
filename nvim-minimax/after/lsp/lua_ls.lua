@@ -20,6 +20,7 @@ return {
     -- on attached client or only makes sense if there is language server attached.
   end,
   -- LuaLS Structure of these settings comes from LuaLS, not Neovim
+  ---@type lspconfig.settings.lua_ls
   settings = {
     Lua = {
       -- Define runtime properties. Use 'LuaJIT', as it is built into Neovim.

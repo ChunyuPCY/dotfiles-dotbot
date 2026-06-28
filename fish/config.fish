@@ -24,7 +24,7 @@ fish_config theme choose "$THEME-$THEME_STYLE"
 # 配置 Homebrew 核心镜像
 eval (/opt/homebrew/bin/brew shellenv | string collect)
 # git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-set -x HOMEBREW_BOTTLE_DOMAIN https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+# set -x HOMEBREW_BOTTLE_DOMAIN https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 set -x HOMEBREW_NO_ENV_HINTS 1 # 可选：屏蔽提示信息
 
 # 定义一个名为 proxy 的函数

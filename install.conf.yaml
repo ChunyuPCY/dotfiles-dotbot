@@ -15,7 +15,6 @@
     ~/.config/starship: ./starship
     ~/.config/nvim-minimax: ./nvim-minimax
     ~/.config/lazyvim: ./lazyvim
-    ~/.config/nvim: ./nvim
     ~/.config/eza: ./eza
     ~/.config/bat: ./bat
     ~/.config/bottom: ./bottom

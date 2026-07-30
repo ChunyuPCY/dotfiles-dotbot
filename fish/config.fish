@@ -72,6 +72,8 @@ alias lvim "env NVIM_APPNAME=lazyvim nvim"
 # cici
 alias ciciconfig "git config user.name panchunyu;git config user.email panchunyu@chinacici.com"
 
+# vscode
+alias code 'open -a "Visual Studio Code"'
 # qoder
 alias qoder 'open -a "Qoder"'
 alias qc 'open -a "Qoder CN"'

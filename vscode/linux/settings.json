@@ -1,0 +1,8 @@
+{
+  "editor.codeLens": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.fontSize": 13,
+  "editor.formatOnPaste": true,
+  "editor.minimap.enabled": true,
+  "editor.tabSize": 2
+}

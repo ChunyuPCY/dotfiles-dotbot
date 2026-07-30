@@ -31,6 +31,24 @@
     ~/.config/fish: ./fish
     ~/.config/fish/private/api-key.fish: private/fish/api-key.fish
 
+    # VS Code Linux
+    ~/.config/Code/User:
+      if: "[[ `uname` = Linux ]]"
+      glob: true
+      path: vscode/linux/*.json
+      force: true
+
+    # VS Code MacOS
+    ~/Library/Application Support/Code/User:
+      if: "[ `uname` = Darwin ]"
+      glob: true
+      path: vscode/macos/*.json
+      force: true
+    ~/Library/Application Support/Code/User/snippets:
+      if: "[ `uname` = Darwin ]"
+      path: vscode/snippets
+      force: true
+
 - shell:
     - git submodule sync --recursive
     - git submodule update --init --recursive --remote

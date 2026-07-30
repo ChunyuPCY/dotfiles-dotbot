@@ -100,9 +100,10 @@ now_if_args(function()
   -- the rules provided by 'nvim-lspconfig'.
   -- Use `:h vim.lsp.config()` or 'after/lsp/' directory to configure servers.
   -- Uncomment and tweak the following `vim.lsp.enable()` call to enable servers.
-  -- vim.lsp.enable({
-  --   -- For example, if `lua-language-server` is installed, use `'lua_ls'` entry
-  -- })
+  vim.lsp.enable({
+    -- For example, if `lua-language-server` is installed, use `'lua_ls'` entry
+    'lua_ls',
+  })
 end)
 
 -- Formatting =================================================================
@@ -127,7 +128,7 @@ later(function()
     },
     -- Map of filetype to formatters
     -- Make sure that necessary CLI tool is available
-    -- formatters_by_ft = { lua = { 'stylua' } },
+    formatters_by_ft = { lua = { 'stylua' } },
   })
 end)
 
@@ -152,10 +153,10 @@ later(function() add({ 'https://github.com/rafamadriz/friendly-snippets' }) end)
 -- If you need them to work elsewhere, consider using other package managers.
 --
 -- You can use it like so:
--- now_if_args(function()
---   add({ 'https://github.com/mason-org/mason.nvim' })
---   require('mason').setup()
--- end)
+now_if_args(function()
+  add({ 'https://github.com/mason-org/mason.nvim' })
+  require('mason').setup()
+end)
 
 -- Beautiful, usable, well maintained color schemes outside of 'mini.nvim' and
 -- have full support of its highlight groups. Use if you don't like 'miniwinter'

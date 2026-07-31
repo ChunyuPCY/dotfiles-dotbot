@@ -6,10 +6,10 @@
       "custom_name": null,
       "identity_cwd": "/Users/pcy/.config",
       "public_pane_numbers": {
-        "11": 1,
-        "12": 2
+        "12": 2,
+        "11": 1
       },
-      "next_public_pane_number": 3,
+      "next_public_pane_number": 7,
       "public_tab_numbers": [
         1,
         2
@@ -37,7 +37,7 @@
           },
           "panes": {
             "12": {
-              "cwd": "/Users/pcy/.dotfiles"
+              "cwd": "/Users/pcy/.dotfiles/herdr"
             }
           },
           "zoomed": false,

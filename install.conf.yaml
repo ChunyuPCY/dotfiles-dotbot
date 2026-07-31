@@ -26,6 +26,8 @@
     ~/.config/yazi: ./yazi
     ~/.config/lazygit: ./lazygit
     ~/.config/tmux: ./tmux
+    ~/.config/herdr/config.toml: ./herdr/config.toml
+    ~/.config/herdr/session.json: ./herdr/session.json
 
     # fish
     ~/.config/fish: ./fish

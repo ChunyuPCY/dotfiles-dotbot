@@ -3,13 +3,101 @@
   "workspaces": [
     {
       "id": "w6",
-      "custom_name": null,
-      "identity_cwd": "/Users/pcy/.config",
+      "custom_name": "cici",
+      "identity_cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin",
       "public_pane_numbers": {
+        "19": 9,
+        "22": 12,
+        "21": 11,
         "12": 2,
-        "11": 1
+        "20": 10
       },
-      "next_public_pane_number": 7,
+      "next_public_pane_number": 13,
+      "public_tab_numbers": [
+        2,
+        3,
+        4
+      ],
+      "next_public_tab_number": 5,
+      "tabs": [
+        {
+          "custom_name": "1-main",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.65000004,
+              "first": {
+                "Pane": 12
+              },
+              "second": {
+                "Pane": 21
+              }
+            }
+          },
+          "panes": {
+            "12": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin"
+            },
+            "21": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin"
+            }
+          },
+          "zoomed": false,
+          "focused": 12,
+          "root_pane": 12
+        },
+        {
+          "custom_name": "2-devrun",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 19
+              },
+              "second": {
+                "Pane": 22
+              }
+            }
+          },
+          "panes": {
+            "22": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin"
+            },
+            "19": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin"
+            }
+          },
+          "zoomed": false,
+          "focused": 22,
+          "root_pane": 19
+        },
+        {
+          "custom_name": "3-other",
+          "layout": {
+            "Pane": 20
+          },
+          "panes": {
+            "20": {
+              "cwd": "/Users/pcy/.dotfiles"
+            }
+          },
+          "zoomed": false,
+          "focused": 20,
+          "root_pane": 20
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w7",
+      "custom_name": "dotfiles",
+      "identity_cwd": "/Users/pcy/.dotfiles",
+      "public_pane_numbers": {
+        "23": 1,
+        "24": 2
+      },
+      "next_public_pane_number": 3,
       "public_tab_numbers": [
         1,
         2
@@ -17,39 +105,39 @@
       "next_public_tab_number": 3,
       "tabs": [
         {
-          "custom_name": null,
+          "custom_name": "1-nvim",
           "layout": {
-            "Pane": 11
+            "Pane": 23
           },
           "panes": {
-            "11": {
-              "cwd": "/Users/pcy/.config"
+            "23": {
+              "cwd": "/Users/pcy/.dotfiles"
             }
           },
           "zoomed": false,
-          "focused": 11,
-          "root_pane": 11
+          "focused": 23,
+          "root_pane": 23
         },
         {
-          "custom_name": null,
+          "custom_name": "2-lazyvim",
           "layout": {
-            "Pane": 12
+            "Pane": 24
           },
           "panes": {
-            "12": {
-              "cwd": "/Users/pcy/.dotfiles/herdr"
+            "24": {
+              "cwd": "/Users/pcy/.dotfiles"
             }
           },
           "zoomed": false,
-          "focused": 12,
-          "root_pane": 12
+          "focused": 24,
+          "root_pane": 24
         }
       ],
-      "active_tab": 1
+      "active_tab": 0
     }
   ],
-  "active": 0,
-  "selected": 0,
+  "active": 1,
+  "selected": 1,
   "sidebar_width": 26,
   "sidebar_section_split": 0.5,
   "collapsed_space_keys": []

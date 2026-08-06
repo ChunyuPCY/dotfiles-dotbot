@@ -100,9 +100,6 @@ end
 Config.on_filetype = function(ft, f)
   misc.safely("filetype:" .. ft, f)
 end
-Config.gh = function(plugin_url)
-  return "https://github.com/" .. plugin_url
-end
 
 -- Define custom autocommand group and helper to create an autocommand.
 -- Autocommands are Neovim's way to define actions that are executed on events
@@ -133,4 +130,8 @@ Config.on_packchanged = function(plugin_name, kinds, callback, desc)
     callback(ev.data)
   end
   Config.new_autocmd("PackChanged", "*", f, desc)
+end
+
+Config.gh = function(x)
+  return "https://github.com/" .. x
 end

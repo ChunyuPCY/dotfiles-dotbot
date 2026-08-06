@@ -3,88 +3,157 @@
   "workspaces": [
     {
       "id": "w6",
-      "custom_name": "cici",
-      "identity_cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin",
+      "custom_name": "cici-frontend",
+      "identity_cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-merchant-admin",
       "public_pane_numbers": {
-        "19": 9,
-        "22": 12,
-        "21": 11,
-        "12": 2,
-        "20": 10
+        "6": 19,
+        "2": 2,
+        "1": 11,
+        "7": 10,
+        "5": 12,
+        "3": 9,
+        "4": 20
       },
-      "next_public_pane_number": 13,
+      "next_public_pane_number": 22,
       "public_tab_numbers": [
         2,
         3,
         4
       ],
-      "next_public_tab_number": 5,
+      "next_public_tab_number": 7,
       "tabs": [
         {
           "custom_name": "1-main",
           "layout": {
             "Split": {
               "direction": "Horizontal",
-              "ratio": 0.65000004,
+              "ratio": 0.6091954,
               "first": {
-                "Pane": 12
+                "Pane": 1
               },
               "second": {
-                "Pane": 21
+                "Pane": 2
               }
             }
           },
           "panes": {
-            "12": {
-              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin"
+            "1": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/suzhoudao/frontend/fe-activity-app"
             },
-            "21": {
-              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin"
+            "2": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-merchant-admin"
             }
           },
           "zoomed": false,
-          "focused": 12,
-          "root_pane": 12
+          "focused": 1,
+          "root_pane": 2
         },
         {
-          "custom_name": "2-devrun",
+          "custom_name": "2-dev",
           "layout": {
             "Split": {
               "direction": "Horizontal",
-              "ratio": 0.5,
+              "ratio": 0.52040815,
               "first": {
-                "Pane": 19
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.5,
+                  "first": {
+                    "Pane": 3
+                  },
+                  "second": {
+                    "Pane": 4
+                  }
+                }
               },
               "second": {
-                "Pane": 22
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.5,
+                  "first": {
+                    "Pane": 5
+                  },
+                  "second": {
+                    "Pane": 6
+                  }
+                }
               }
             }
           },
           "panes": {
-            "22": {
-              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin"
+            "3": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/suzhoudao/frontend/fe-activity-app"
             },
-            "19": {
-              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-admin"
+            "6": {
+              "cwd": "/Users/pcy/Documents/code/learn/java/demo"
+            },
+            "4": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/suzhoudao/frontend/fe-activity-app"
+            },
+            "5": {
+              "cwd": "/Users/pcy/Documents/code/learn/java/demo"
             }
           },
           "zoomed": false,
-          "focused": 22,
-          "root_pane": 19
+          "focused": 3,
+          "root_pane": 3
         },
         {
           "custom_name": "3-other",
           "layout": {
-            "Pane": 20
+            "Pane": 7
           },
           "panes": {
-            "20": {
-              "cwd": "/Users/pcy/.dotfiles"
+            "7": {
+              "cwd": "/Users/pcy/Documents/notebook"
             }
           },
           "zoomed": false,
-          "focused": 20,
-          "root_pane": 20
+          "focused": 7,
+          "root_pane": 7
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w8",
+      "custom_name": "cici-backend",
+      "identity_cwd": "/Users/pcy/Documents/work/code/cici/mine/project-management",
+      "public_pane_numbers": {
+        "13": 2,
+        "8": 1
+      },
+      "next_public_pane_number": 3,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": "1-learn",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.6,
+              "first": {
+                "Pane": 8
+              },
+              "second": {
+                "Pane": 13
+              }
+            }
+          },
+          "panes": {
+            "8": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/mine/project-management"
+            },
+            "13": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/mine/project-management"
+            }
+          },
+          "zoomed": false,
+          "focused": 8,
+          "root_pane": 8
         }
       ],
       "active_tab": 0
@@ -92,12 +161,14 @@
     {
       "id": "w7",
       "custom_name": "dotfiles",
-      "identity_cwd": "/Users/pcy/.dotfiles",
+      "identity_cwd": "/Users/pcy/.dotfiles/herdr",
       "public_pane_numbers": {
-        "23": 1,
-        "24": 2
+        "12": 4,
+        "9": 3,
+        "10": 1,
+        "11": 2
       },
-      "next_public_pane_number": 3,
+      "next_public_pane_number": 5,
       "public_tab_numbers": [
         1,
         2
@@ -107,37 +178,61 @@
         {
           "custom_name": "1-nvim",
           "layout": {
-            "Pane": 23
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.6,
+              "first": {
+                "Pane": 9
+              },
+              "second": {
+                "Pane": 10
+              }
+            }
           },
           "panes": {
-            "23": {
+            "10": {
+              "cwd": "/Users/pcy/.dotfiles/herdr"
+            },
+            "9": {
               "cwd": "/Users/pcy/.dotfiles"
             }
           },
           "zoomed": false,
-          "focused": 23,
-          "root_pane": 23
+          "focused": 9,
+          "root_pane": 10
         },
         {
           "custom_name": "2-lazyvim",
           "layout": {
-            "Pane": 24
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 11
+              },
+              "second": {
+                "Pane": 12
+              }
+            }
           },
           "panes": {
-            "24": {
+            "11": {
               "cwd": "/Users/pcy/.dotfiles"
+            },
+            "12": {
+              "cwd": "/Users/pcy/.dotfiles/fish"
             }
           },
           "zoomed": false,
-          "focused": 24,
-          "root_pane": 24
+          "focused": 12,
+          "root_pane": 11
         }
       ],
       "active_tab": 0
     }
   ],
-  "active": 1,
-  "selected": 1,
+  "active": 2,
+  "selected": 2,
   "sidebar_width": 26,
   "sidebar_section_split": 0.5,
   "collapsed_space_keys": []

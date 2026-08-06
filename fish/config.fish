@@ -21,16 +21,18 @@ eval (/opt/homebrew/bin/brew shellenv | string collect)
 set -x HOMEBREW_NO_ENV_HINTS 1 # 可选：屏蔽提示信息
 
 # 定义一个名为 proxy 的函数
+# 注意：fish 函数内 set 默认是函数局部变量，必须用 -gx（全局+导出）才会生效
 function proxy_on
-    set -x http_proxy http://127.0.0.1:7897
-    set -x https_proxy http://127.0.0.1:7897
-    set -x all_proxy socks5://127.0.0.1:7897
+    set -gx http_proxy http://127.0.0.1:7897
+    set -gx https_proxy http://127.0.0.1:7897
+    set -gx all_proxy socks5://127.0.0.1:7897
 end
 
 # 定义一个关闭代理的函数
 function proxy_off
     set -e http_proxy
     set -e https_proxy
+    set -e all_proxy
 end
 
 proxy_on
@@ -147,3 +149,23 @@ eval "$(uvx --generate-shell-completion fish)"
 fish_add_path "$HOME/.local/bin"
 #
 # ---------------------------------------------------------------
+#
+# java (jenv 多版本管理: jenv local 17 / 21 按项目切换)
+set -gx JENV_ROOT "$HOME/.jenv"
+fish_add_path "$JENV_ROOT/bin"
+jenv init - | source
+jenv global 21
+
+# 按 jenv 当前版本自动导出 JAVA_HOME（cd 时触发）。
+# 背景：Homebrew mvn 包装脚本在 JAVA_HOME 为空时默认用 openjdk 26（maven 的依赖），
+# 必须保证 JAVA_HOME 指向 jenv 选中的 JDK，否则 mvn/spring-boot 会跑到 26 上。
+function __jenv_export_java_home --on-variable PWD
+    set -l jenv_version (jenv version-name 2>/dev/null)
+    set -l jenv_home (jenv prefix "$jenv_version" 2>/dev/null)
+    if test -n "$jenv_home"
+        set -gx JAVA_HOME "$jenv_home"
+    else
+        set -e JAVA_HOME
+    end
+end
+__jenv_export_java_home

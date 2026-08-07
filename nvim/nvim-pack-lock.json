@@ -27,6 +27,10 @@
     "nvim-treesitter-textobjects": {
       "rev": "898ee307df58f854d11cd7edd06472574d48014e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+    },
+    "zk-nvim": {
+      "rev": "922134d8f95f0169bb572b09f2fa643573cb51f8",
+      "src": "https://github.com/zk-org/zk-nvim"
     }
   }
 }

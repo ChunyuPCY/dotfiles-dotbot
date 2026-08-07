@@ -172,3 +172,27 @@ end)
 --   -- Enable only one
 --   vim.cmd('color everforest')
 -- end)
+
+now_if_args(function()
+  add({ 'https://github.com/zk-org/zk-nvim' })
+  local zk = require('zk')
+  zk.setup({
+    picker = 'minipick',
+    lsp = {
+      -- `config` is passed to `vim.lsp.start(config)`
+      config = {
+        name = 'zk',
+        cmd = { 'zk', 'lsp' },
+        filetypes = { 'markdown' },
+        -- on_attach = ...
+        -- etc, see `:h vim.lsp.start()`
+      },
+
+      -- automatically attach buffers in a zk notebook that match the given filetypes
+      auto_attach = {
+        enabled = true,
+      },
+    },
+  })
+end)
+

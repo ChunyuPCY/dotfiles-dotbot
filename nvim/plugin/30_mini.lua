@@ -33,7 +33,38 @@ local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 -- - `:h mini.nvim-color-schemes` - list of other color schemes
 -- - `:h MiniHues-examples` - how to define highlighting with 'mini.hues'
 -- - 'plugin/40_plugins.lua' honorable mentions - other good color schemes
-now(function() vim.cmd('colorscheme miniwinter') end)
+now(function()
+  -- vim.cmd('colorscheme miniwinter')
+  vim.cmd('colorscheme catppuccin')
+
+  -- Transparent background (requires terminal emulator with transparency).
+  -- Removes background color from common UI highlight groups.
+  -- See `:h MiniColors-colorscheme:add_transparency()`.
+  require('mini.colors').get_colorscheme():add_transparency({
+    float = true, -- Floating windows
+    statuscolumn = true, -- Line numbers, sign column, fold column
+    statusline = false, -- Status line
+    tabline = false, -- Tab line
+    winbar = true, -- Window bar
+  }):apply({ clear = false })
+
+  -- Clear remaining groups not covered by `add_transparency()`.
+  for _, group in ipairs({
+    'ColorColumn', 'CursorColumn', 'CursorLine', 'Folded', 'PmenuThumb',
+  }) do
+    vim.api.nvim_set_hl(0, group, { bg = 'NONE' })
+  end
+
+  -- 'catppuccin' defines `NormalFloat`, `FloatBorder`, and `FloatTitle` via
+  -- default links (to `Pmenu`, `WinSeparator`, and `Title`), which
+  -- `add_transparency()` can not unlink. Unlink them and clear their background
+  -- so floating windows (LSP hover, 'mini.files', 'mini.pick', ...) are
+  -- transparent too. Preserve `fg` to keep their text color.
+  for _, group in ipairs({ 'NormalFloat', 'FloatBorder', 'FloatTitle' }) do
+    local fg = vim.api.nvim_get_hl(0, { name = group, link = false }).fg
+    vim.api.nvim_set_hl(0, group, { fg = fg, bg = 'NONE' })
+  end
+end)
 
 -- You can try these other 'mini.hues'-based color schemes (uncomment with `gcc`):
 -- now(function() vim.cmd('colorscheme minispring') end)
@@ -256,8 +287,9 @@ now_if_args(function()
   MiniMisc.setup_restore_cursor()
 
   -- Synchronize terminal emulator background with Neovim's background to remove
-  -- possibly different color padding around Neovim instance
-  MiniMisc.setup_termbg_sync()
+  -- possibly different color padding around Neovim instance.
+  -- Disabled to allow transparent background.
+  -- MiniMisc.setup_termbg_sync()
 end)
 
 -- Step two ===================================================================

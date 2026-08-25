@@ -50,7 +50,7 @@ now(function()
 
   -- Clear remaining groups not covered by `add_transparency()`.
   for _, group in ipairs({
-    'ColorColumn', 'CursorColumn', 'CursorLine', 'Folded', 'PmenuThumb',
+    'ColorColumn', 'CursorColumn', 'Folded', 'PmenuThumb',
   }) do
     vim.api.nvim_set_hl(0, group, { bg = 'NONE' })
   end

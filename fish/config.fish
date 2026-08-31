@@ -77,8 +77,11 @@ alias ciciconfig "git config user.name panchunyu;git config user.email panchunyu
 # vscode
 alias code 'open -a "Visual Studio Code"'
 # qoder
-alias qoder 'open -a "Qoder"'
-alias qc 'open -a "Qoder CN"'
+# alias qoder 'open -a "Qoder"'
+# QODERCN_DISPATCHER_PATH v1
+fish_add_path -p -m $HOME/.qoder-cn/entry
+# 上面的目录下有 qodercn 可执行文件
+# END QODERCN_DISPATCHER_PATH v1
 
 alias fup "source $XDG_CONFIG_HOME/fish/config.fish;echo fish updated!"
 

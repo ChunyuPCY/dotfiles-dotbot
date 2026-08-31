@@ -19,6 +19,14 @@ end
 nmap('[p', '<Cmd>exe "iput! " . v:register<CR>', 'Paste Above')
 nmap(']p', '<Cmd>exe "iput "  . v:register<CR>', 'Paste Below')
 
+-- Seamless window/pane navigation with 'smart-splits.nvim' (tmux/herdr/etc.).
+-- Moves between Neovim windows; at an edge, crosses into the neighboring
+-- multiplexer pane.
+nmap('<C-h>', function() require('smart-splits').move_cursor_left() end, 'Move to left split')
+nmap('<C-j>', function() require('smart-splits').move_cursor_down() end, 'Move to below split')
+nmap('<C-k>', function() require('smart-splits').move_cursor_up() end, 'Move to above split')
+nmap('<C-l>', function() require('smart-splits').move_cursor_right() end, 'Move to right split')
+
 -- Many general mappings are created by 'mini.basics'. See 'plugin/30_mini.lua'
 
 -- stylua: ignore start

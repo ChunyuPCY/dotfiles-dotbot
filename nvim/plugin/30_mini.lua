@@ -89,8 +89,9 @@ now(function()
     -- Manage options in 'plugin/10_options.lua' for didactic purposes
     options = { basic = false },
     mappings = {
-      -- Create `<C-hjkl>` mappings for window navigation
-      windows = true,
+      -- Disabled: `<C-hjkl>` window navigation is handled by 'smart-splits.nvim'
+      -- (see 'plugin/40_plugins.lua'), which also crosses into multiplexer panes.
+      windows = false,
       -- Create `<M-hjkl>` mappings for navigation in Insert and Command modes
       move_with_alt = true,
     },
@@ -609,6 +610,11 @@ later(function()
   MiniKeymap.map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
   -- On `<BS>` just try to account for pairs from 'mini.pairs'
   MiniKeymap.map_multistep('i', '<BS>', { 'minipairs_bs' })
+
+  -- Support most common modes. This can also contain 't', but would
+  -- only mean to press `<Esc>` inside terminal.
+  local mode = { 'i', 'c', 'x', 's' }
+  MiniKeymap.map_combo(mode, 'jk', '<BS><BS><Esc>')
 end)
 
 -- Window with text overview. It is displayed on the right hand side. Can be used

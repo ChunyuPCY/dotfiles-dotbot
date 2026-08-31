@@ -146,6 +146,23 @@ end)
 -- See `:h MiniSnippets.gen_loader.from_lang()`.
 later(function() add({ 'https://github.com/rafamadriz/friendly-snippets' }) end)
 
+-- Window / pane navigation ===================================================
+
+-- Seamless directional navigation between Neovim windows and terminal
+-- multiplexer panes (tmux, herdr, wezterm, kitty, zellij). Maps `<C-hjkl>`
+-- (see 'plugin/20_keymaps.lua') to move between windows, crossing into the
+-- neighboring multiplexer pane at a window edge.
+--
+-- The herdr side is wired in '~/.config/herdr/config.toml' via the
+-- smart-splits.nvim herdr plugin (see `herdr plugin list`).
+later(function()
+  add({ 'https://github.com/mrjones2014/smart-splits.nvim' })
+  require('smart-splits').setup({
+    ignored_filetypes = { 'nofile', 'quickfix', 'qf', 'prompt' },
+    ignored_buftypes = { 'nofile' },
+  })
+end)
+
 -- Honorable mentions =========================================================
 
 -- 'mason-org/mason.nvim' (a.k.a. "Mason") is a great tool (package manager) for

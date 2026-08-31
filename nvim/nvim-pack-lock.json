@@ -28,6 +28,10 @@
       "rev": "898ee307df58f854d11cd7edd06472574d48014e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
+    "smart-splits.nvim": {
+      "rev": "0ab2e4928dc867dfea3ff1da186e69f289d8a532",
+      "src": "https://github.com/mrjones2014/smart-splits.nvim"
+    },
     "zk-nvim": {
       "rev": "4f72b73fc92c57ab2ddffd0188f3bf72cf1ef559",
       "src": "https://github.com/zk-org/zk-nvim"

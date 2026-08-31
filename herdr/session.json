@@ -4,23 +4,20 @@
     {
       "id": "w6",
       "custom_name": "cici-frontend",
-      "identity_cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-merchant-admin",
+      "identity_cwd": "/Users/pcy/Documents/work/code/cici/mine/suda-tracker",
       "public_pane_numbers": {
-        "6": 19,
         "2": 2,
-        "1": 11,
-        "7": 10,
-        "5": 12,
-        "3": 9,
-        "4": 20
+        "4": 24,
+        "5": 25,
+        "3": 22,
+        "1": 11
       },
-      "next_public_pane_number": 22,
+      "next_public_pane_number": 28,
       "public_tab_numbers": [
         2,
-        3,
-        4
+        7
       ],
-      "next_public_tab_number": 7,
+      "next_public_tab_number": 9,
       "tabs": [
         {
           "custom_name": "1-main",
@@ -32,16 +29,28 @@
                 "Pane": 1
               },
               "second": {
-                "Pane": 2
+                "Split": {
+                  "direction": "Vertical",
+                  "ratio": 0.5,
+                  "first": {
+                    "Pane": 2
+                  },
+                  "second": {
+                    "Pane": 3
+                  }
+                }
               }
             }
           },
           "panes": {
             "1": {
-              "cwd": "/Users/pcy/Documents/work/code/cici/suzhoudao/frontend/fe-activity-app"
+              "cwd": "/Users/pcy/Documents/work/code/cici/mine/suda-tracker"
             },
             "2": {
-              "cwd": "/Users/pcy/Documents/work/code/cici/zhengqi/taihu-integrated-platform/fe-merchant-admin"
+              "cwd": "/Users/pcy/Documents/work/code/cici/mine/suda-tracker"
+            },
+            "3": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/sushangtong/fe-website"
             }
           },
           "zoomed": false,
@@ -53,64 +62,26 @@
           "layout": {
             "Split": {
               "direction": "Horizontal",
-              "ratio": 0.52040815,
+              "ratio": 0.5,
               "first": {
-                "Split": {
-                  "direction": "Vertical",
-                  "ratio": 0.5,
-                  "first": {
-                    "Pane": 3
-                  },
-                  "second": {
-                    "Pane": 4
-                  }
-                }
+                "Pane": 4
               },
               "second": {
-                "Split": {
-                  "direction": "Vertical",
-                  "ratio": 0.5,
-                  "first": {
-                    "Pane": 5
-                  },
-                  "second": {
-                    "Pane": 6
-                  }
-                }
+                "Pane": 5
               }
             }
           },
           "panes": {
-            "3": {
-              "cwd": "/Users/pcy/Documents/work/code/cici/suzhoudao/frontend/fe-activity-app"
-            },
-            "6": {
-              "cwd": "/Users/pcy/Documents/code/learn/java/demo"
-            },
             "4": {
-              "cwd": "/Users/pcy/Documents/work/code/cici/suzhoudao/frontend/fe-activity-app"
+              "cwd": "/Users/pcy/Documents/work/code/cici/sushangtong/fe-xxzx-app"
             },
             "5": {
-              "cwd": "/Users/pcy/Documents/code/learn/java/demo"
+              "cwd": "/Users/pcy"
             }
           },
           "zoomed": false,
-          "focused": 3,
-          "root_pane": 3
-        },
-        {
-          "custom_name": "3-other",
-          "layout": {
-            "Pane": 7
-          },
-          "panes": {
-            "7": {
-              "cwd": "/Users/pcy/Documents/notebook"
-            }
-          },
-          "zoomed": false,
-          "focused": 7,
-          "root_pane": 7
+          "focused": 4,
+          "root_pane": 4
         }
       ],
       "active_tab": 0
@@ -120,8 +91,8 @@
       "custom_name": "cici-backend",
       "identity_cwd": "/Users/pcy/Documents/work/code/cici/mine/project-management",
       "public_pane_numbers": {
-        "13": 2,
-        "8": 1
+        "6": 1,
+        "7": 2
       },
       "next_public_pane_number": 3,
       "public_tab_numbers": [
@@ -136,24 +107,24 @@
               "direction": "Horizontal",
               "ratio": 0.6,
               "first": {
-                "Pane": 8
+                "Pane": 6
               },
               "second": {
-                "Pane": 13
+                "Pane": 7
               }
             }
           },
           "panes": {
-            "8": {
-              "cwd": "/Users/pcy/Documents/work/code/cici/mine/project-management"
+            "7": {
+              "cwd": "/Users/pcy/Documents/work/code/cici/mine/project-management/frontend/apps/admin"
             },
-            "13": {
+            "6": {
               "cwd": "/Users/pcy/Documents/work/code/cici/mine/project-management"
             }
           },
           "zoomed": false,
-          "focused": 8,
-          "root_pane": 8
+          "focused": 7,
+          "root_pane": 6
         }
       ],
       "active_tab": 0
@@ -161,19 +132,18 @@
     {
       "id": "w7",
       "custom_name": "dotfiles",
-      "identity_cwd": "/Users/pcy/.dotfiles/herdr",
+      "identity_cwd": "/Users/pcy/.dotfiles",
       "public_pane_numbers": {
-        "12": 4,
-        "9": 3,
-        "10": 1,
-        "11": 2
+        "8": 1,
+        "9": 9,
+        "10": 10
       },
-      "next_public_pane_number": 5,
+      "next_public_pane_number": 11,
       "public_tab_numbers": [
         1,
-        2
+        5
       ],
-      "next_public_tab_number": 3,
+      "next_public_tab_number": 6,
       "tabs": [
         {
           "custom_name": "1-nvim",
@@ -182,53 +152,41 @@
               "direction": "Horizontal",
               "ratio": 0.6,
               "first": {
-                "Pane": 9
+                "Pane": 8
               },
               "second": {
-                "Pane": 10
+                "Pane": 9
               }
             }
           },
           "panes": {
-            "10": {
-              "cwd": "/Users/pcy/.dotfiles/herdr"
+            "8": {
+              "cwd": "/Users/pcy/.dotfiles"
             },
             "9": {
               "cwd": "/Users/pcy/.dotfiles"
             }
           },
           "zoomed": false,
-          "focused": 9,
-          "root_pane": 10
+          "focused": 8,
+          "root_pane": 8
         },
         {
-          "custom_name": "2-lazyvim",
+          "custom_name": "2-notebook",
           "layout": {
-            "Split": {
-              "direction": "Horizontal",
-              "ratio": 0.5,
-              "first": {
-                "Pane": 11
-              },
-              "second": {
-                "Pane": 12
-              }
-            }
+            "Pane": 10
           },
           "panes": {
-            "11": {
-              "cwd": "/Users/pcy/.dotfiles"
-            },
-            "12": {
-              "cwd": "/Users/pcy/.dotfiles/fish"
+            "10": {
+              "cwd": "/Users/pcy/.qoder-cn/entry"
             }
           },
           "zoomed": false,
-          "focused": 12,
-          "root_pane": 11
+          "focused": 10,
+          "root_pane": 10
         }
       ],
-      "active_tab": 0
+      "active_tab": 1
     }
   ],
   "active": 2,

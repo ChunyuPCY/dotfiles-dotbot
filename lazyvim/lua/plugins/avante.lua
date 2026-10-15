@@ -1,6 +1,12 @@
 return {
   "yetone/avante.nvim",
   enabled = true,
+  dependencies = {
+    -- avante 新版依赖 luarocks 包 mega.cmdparse（其依赖 mega.logging），
+    -- 以 git 插件形式安装到 runtimepath 即可满足 require
+    "ColinKennedy/mega.cmdparse",
+    "ColinKennedy/mega.logging",
+  },
   opts = {
     -- add any opts here
     -- for example
@@ -11,7 +17,7 @@ return {
         __inherited_from = "openai",
         api_key_name = "DEEPSEEK_API_KEY",
         endpoint = "https://api.deepseek.com",
-        model = "deepseek-v4-pro",
+        model = "deepseek-flash",
         max_tokens = 8192,
         -- 🆕 V4 新增：思考模式参数(可选)
         extra_request_body = {

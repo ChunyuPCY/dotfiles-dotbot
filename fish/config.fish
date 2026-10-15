@@ -156,7 +156,10 @@ fish_add_path "$HOME/.local/bin"
 # java (jenv 多版本管理: jenv local 17 / 21 按项目切换)
 set -gx JENV_ROOT "$HOME/.jenv"
 fish_add_path "$JENV_ROOT/bin"
-jenv init - | source
+# --no-rehash: Homebrew 的 vendor_functions.d/jenv.fish 已经会在启动时 rehash，
+# 这里再 rehash 会和它抢锁（.jenv-shim），一旦上次被 Ctrl-C 打断就会留下锁文件，
+# 导致每次开终端都报 "cannot rehash"。shims 只在装新 JDK 后手动 `jenv rehash` 即可。
+jenv init - --no-rehash | source
 jenv global 21
 
 # 按 jenv 当前版本自动导出 JAVA_HOME（cd 时触发）。
@@ -172,3 +175,10 @@ function __jenv_export_java_home --on-variable PWD
     end
 end
 __jenv_export_java_home
+
+# pnpm
+set -gx PNPM_HOME "/Users/pcy/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

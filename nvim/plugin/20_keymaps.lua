@@ -11,21 +11,29 @@
 -- An example helper to create a Normal mode mapping
 local nmap = function(lhs, rhs, desc)
   -- See `:h vim.keymap.set()`
-  vim.keymap.set('n', lhs, rhs, { desc = desc })
+  vim.keymap.set("n", lhs, rhs, { desc = desc })
 end
 
 -- Paste linewise before/after current line
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
-nmap('[p', '<Cmd>exe "iput! " . v:register<CR>', 'Paste Above')
-nmap(']p', '<Cmd>exe "iput "  . v:register<CR>', 'Paste Below')
+nmap("[p", '<Cmd>exe "iput! " . v:register<CR>', "Paste Above")
+nmap("]p", '<Cmd>exe "iput "  . v:register<CR>', "Paste Below")
 
 -- Seamless window/pane navigation with 'smart-splits.nvim' (tmux/herdr/etc.).
 -- Moves between Neovim windows; at an edge, crosses into the neighboring
 -- multiplexer pane.
-nmap('<C-h>', function() require('smart-splits').move_cursor_left() end, 'Move to left split')
-nmap('<C-j>', function() require('smart-splits').move_cursor_down() end, 'Move to below split')
-nmap('<C-k>', function() require('smart-splits').move_cursor_up() end, 'Move to above split')
-nmap('<C-l>', function() require('smart-splits').move_cursor_right() end, 'Move to right split')
+nmap("<C-h>", function()
+  require("smart-splits").move_cursor_left()
+end, "Move to left split")
+nmap("<C-j>", function()
+  require("smart-splits").move_cursor_down()
+end, "Move to below split")
+nmap("<C-k>", function()
+  require("smart-splits").move_cursor_up()
+end, "Move to above split")
+nmap("<C-l>", function()
+  require("smart-splits").move_cursor_right()
+end, "Move to right split")
 
 -- Many general mappings are created by 'mini.basics'. See 'plugin/30_mini.lua'
 
@@ -68,6 +76,7 @@ Config.leader_group_clues = {
   { mode = 'n', keys = '<Leader>s', desc = '+Session' },
   { mode = 'n', keys = '<Leader>t', desc = '+Terminal' },
   { mode = 'n', keys = '<Leader>v', desc = '+Visits' },
+  { mode = 'n', keys = '<Leader>w', desc = '+Window' },
 
   { mode = 'x', keys = '<Leader>g', desc = '+Git' },
   { mode = 'x', keys = '<Leader>l', desc = '+Language' },

@@ -15,8 +15,26 @@
 -- This is also a good place to set buffer-local 'mini.nvim' variables.
 -- See `:h mini.nvim-buffer-local-config` and `:h mini.nvim-disabling-recipes`.
 
--- Enable spelling and wrap for window
-vim.cmd('setlocal spell wrap')
+-- Wrap long lines for comfortable reading. NOTE: 'spell' is deliberately
+-- NOT enabled here: Neovim's spellcheck doesn't understand CJK, so any Chinese
+-- text gets marked with red squiggles. If you want to spellcheck English text
+-- inside markdown, run `setlocal spell` (or use `zS` mapping below).
+vim.cmd('setlocal wrap')
+
+-- Allow 'render-markdown.nvim' (and built-in conceal) to prettify headings,
+-- bold/italic, lists, code blocks, links, etc. without editing the file.
+vim.cmd('setlocal conceallevel=2 concealcursor=n')
+
+-- Toggle spellchecking on/off (handy when writing English in Chinese notes)
+vim.keymap.set('n', 'zS', function()
+  vim.wo.spell = not vim.wo.spell
+  local on = vim.wo.spell and 'ON' or 'OFF'
+  vim.notify('Spellcheck: ' .. on)
+end, { buffer = 0, desc = 'Toggle spellcheck' })
+
+-- Toggle 'render-markdown.nvim' rendering for this buffer (uppercase = local
+-- variant, following 'plugin/20_keymaps.lua' conventions)
+vim.keymap.set('n', '<Leader>mR', '<Cmd>RenderMarkdown toggle<CR>', { buffer = 0, desc = 'Toggle markdown render' })
 
 -- Fold with tree-sitter
 vim.cmd('setlocal foldmethod=expr foldexpr=v:lua.vim.treesitter.foldexpr()')

@@ -3,3 +3,4 @@
 **/node_modules
 encrypted/age.key
 private/
+**/.qoder/*.local.json

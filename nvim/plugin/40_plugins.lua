@@ -129,9 +129,40 @@ later(function()
       -- Allow formatting from LSP server if no dedicated formatter is available
       lsp_format = 'fallback',
     },
+    -- Automatically format on save (manual trigger stays at `<Leader>lf`)
+    format_on_save = {
+      timeout_ms = 2000,
+      lsp_format = 'fallback',
+    },
     -- Map of filetype to formatters
     -- Make sure that necessary CLI tool is available
-    formatters_by_ft = { lua = { 'stylua' } },
+    formatters_by_ft = {
+      lua = { 'stylua' },
+      -- 'oxfmt' (Oxc formatter) supports markdown since v0.65: it normalizes
+      -- list indents, aligns tables, collapses stray spaces, but leaves code
+      -- block contents and paragraph line breaks untouched — safe for Chinese
+      -- notes written sentence-per-line. Prettier is kept as fallback.
+      -- Both are installed via 'mason.nvim' (no global npm needed):
+      --   `:MasonInstall oxfmt prettier`
+      markdown = { 'oxfmt', 'prettier' },
+    },
+  })
+end)
+
+-- Markdown rendering =========================================================
+
+-- 'render-markdown.nvim' prettifies markdown in place using virtual text and
+-- conceal: nicer headings, bold/italic, lists, checkboxes, code blocks, tables,
+-- links. It uses the 'markdown'/'markdown_inline' tree-sitter parsers which ship
+-- with Neovim 0.12, so no extra install is needed. `conceallevel` is set in
+-- 'after/ftplugin/markdown.lua'.
+--
+-- Toggle rendering per-buffer with `<Leader>mR` (or use `:RenderMarkdown`
+-- enable/disable/toggle, see `:h render-markdown`).
+later(function()
+  add({ 'https://github.com/MeanderingProgrammer/render-markdown.nvim' })
+  require('render-markdown').setup({
+    file_types = { 'markdown' },
   })
 end)
 

@@ -5,6 +5,18 @@ return {
   "mrjones2014/smart-splits.nvim",
   lazy = true,
   event = mux and "VeryLazy" or nil, -- load early if mux detected
+  dependencies = {
+    {
+      "adriankarlen/smart-splits-backend-herdr",
+      main = "smart-splits-backend-herdr",
+      opts = {},
+    },
+    {
+      "smart-splits-nvim/backend-wezterm",
+      main = "smart-splits-backend-wezterm",
+      opts = { cli_path = "wezterm" },
+    },
+  },
   keys = {
     {
       "<c-h>",
@@ -64,6 +76,7 @@ return {
     },
   },
   opts = {
+    mux = { backend = { "smart-splits-backend-herdr", "smart-splits-backend-wezterm" } },
     ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" },
     ignored_buftypes = { "nofile" },
   },

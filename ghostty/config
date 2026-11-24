@@ -4,8 +4,8 @@
 
 # 英文字体(可以使用 CLI 生成有效值列表:ghostty +list-fonts)
 font-family = "Maple Mono NF"
-# 中文字体
-# font-family = "FZLTZHK--GBK1-0"
+# 中文字体(回退字体,按顺序匹配缺失字形)
+font-family = "Maple Mono NF CN"
 # 字体大小
 font-size = 16
 # 自动复制选中文本
@@ -16,7 +16,7 @@ mouse-hide-while-typing = true
 confirm-close-surface = false
 cursor-style = "block"
 # 光标轨迹特效相关文件
-custom-shader = "~/.config/ghostty/shaders/liquid-ghostty.glsl"
+# custom-shader = "~/.config/ghostty/shaders/liquid-ghostty.glsl"
 
 # ===
 # === 主题

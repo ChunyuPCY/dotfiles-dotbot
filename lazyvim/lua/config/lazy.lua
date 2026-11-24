@@ -31,6 +31,10 @@ require("lazy").setup({
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = { colorscheme = { "catppuccin", "tokyonight", "habamax" } },
+  git = {
+    -- 构建进程也复用这个超时（默认 120s），avante 的 cargo release 构建会被提前杀掉
+    timeout = 60 * 30,
+  },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
